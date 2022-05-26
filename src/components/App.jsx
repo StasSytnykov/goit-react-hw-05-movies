@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Route, Switchm, Router } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { TrandingMovies } from './TrandingMovies';
-import { onFetchMovies } from './api-service/api';
+import { onFetchMovies } from './services/api';
+import { Searchbar } from './Searchbar';
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -13,7 +15,6 @@ export const App = () => {
   const onGetMovies = async () => {
     try {
       const movies = await onFetchMovies();
-      console.log(movies);
       setMovies(movies);
     } catch (error) {
       console.log(error);
@@ -21,9 +22,14 @@ export const App = () => {
   };
 
   return (
-    <div>
-      <Navigation />
-      <TrandingMovies movies={movies} />
-    </div>
+    <Router>
+      <div>
+        <Navigation />
+        <Route path="/">
+          <TrandingMovies movies={movies} />
+        </Route>
+        <Searchbar />
+      </div>
+    </Router>
   );
 };
