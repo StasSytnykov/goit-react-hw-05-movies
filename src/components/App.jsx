@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Route, Switchm, Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Navigation } from './Navigation';
-import { TrandingMovies } from './TrandingMovies';
-import { onFetchMovies } from './services/api';
-import { Searchbar } from './Searchbar';
+import { onFetchMovies, onFetchMovie } from './services/api';
+import { TrandingMovies } from './pages/TrandingMovies';
+import { Searchbar } from './pages/Searchbar';
+import { FoundMovieList } from './pages/FoundMovieList';
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
+  const [foundMovies, setMovie] = useState([]);
 
   useEffect(() => {
     onGetMovies();
+    onGetFoundMovies();
   }, []);
 
   const onGetMovies = async () => {
@@ -21,15 +24,33 @@ export const App = () => {
     }
   };
 
+  const onGetFoundMovies = async query => {
+    try {
+      const foundMovies = await onFetchMovie(query);
+      setMovie(foundMovies);
+      console.log(foundMovies);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <Router>
-      <div>
+    <div>
+      <header>
         <Navigation />
-        <Route path="/">
-          <TrandingMovies movies={movies} />
-        </Route>
-        <Searchbar />
-      </div>
-    </Router>
+      </header>
+
+      <main>
+        <Switch>
+          <Route exact path="/">
+            <TrandingMovies movies={movies} />
+          </Route>
+          <Route path="/movies">
+            <Searchbar onGetMovies={onGetFoundMovies} />
+            <FoundMovieList foundMovies={foundMovies} />
+          </Route>
+        </Switch>
+      </main>
+    </div>
   );
 };

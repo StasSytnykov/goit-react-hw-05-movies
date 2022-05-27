@@ -1,4 +1,4 @@
-import { TrandingMoviesItem } from './TrandingMoviesItem/TrandingMoviesItem';
+import { TrandingMoviesItem } from './TrandingMoviesItem';
 
 export const TrandingMovies = ({ movies }) => {
   return (
