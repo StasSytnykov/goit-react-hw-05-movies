@@ -1,13 +1,13 @@
-import { TrandingMoviesItem } from './TrandingMoviesItem';
+import { HomePageItem } from './HomePageItem';
 
-export const TrandingMovies = ({ movies }) => {
+export const HomePage = ({ movies }) => {
   return (
     <div>
       <h2>Tranding today</h2>
       {
         <ul>
           {movies.map(({ title, id }) => (
-            <TrandingMoviesItem key={id} title={title} />
+            <HomePageItem key={id} title={title} id={id} />
           ))}
         </ul>
       }

@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { onFetchMovies, onFetchFoundMovies } from './services/api';
-import { TrandingMovies } from './pages/TrandingMovies';
-import { Searchbar } from './pages/Searchbar';
+import { HomePage } from './pages/HomePage';
+import { MoviesPage } from './pages/MoviesPage';
 import { FoundMovieList } from './pages/FoundMovieList';
+import { MovieDetailsPage } from './pages/MovieDetailsPage';
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -42,11 +43,15 @@ export const App = () => {
       <main>
         <Switch>
           <Route exact path="/">
-            <TrandingMovies movies={movies} />
+            <HomePage movies={movies} />
           </Route>
 
-          <Route path="/movies">
-            <Searchbar onGetFoundMovies={onGetFoundMovies} />
+          <Route path="/movies/:id">
+            <MovieDetailsPage />
+          </Route>
+
+          <Route exact path="/movies">
+            <MoviesPage onGetFoundMovies={onGetFoundMovies} />
 
             {foundMovies.length > 0 && (
               <FoundMovieList foundMovies={foundMovies} />

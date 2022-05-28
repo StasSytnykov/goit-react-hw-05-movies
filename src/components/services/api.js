@@ -15,4 +15,11 @@ const onFetchFoundMovies = async query => {
   return response.data.results;
 };
 
-export { onFetchFoundMovies, onFetchMovies };
+const onFetchMovie = async id => {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}${API_KEY}&language=en-US`
+  );
+  return response.data;
+};
+
+export { onFetchFoundMovies, onFetchMovies, onFetchMovie };

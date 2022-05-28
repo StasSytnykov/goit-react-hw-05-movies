@@ -1,1 +1,0 @@
-export { TrandingMoviesItem } from './TrandingMoviesItem';
