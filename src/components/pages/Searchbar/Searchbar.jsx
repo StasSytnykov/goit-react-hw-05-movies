@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-export const Searchbar = ({ onGetMovies }) => {
+export const Searchbar = ({ onGetFoundMovies }) => {
   const [query, setQuery] = useState('');
 
   const onSubmitForm = event => {
     event.preventDefault();
-    onGetMovies(query);
+    onGetFoundMovies(query);
     onReset(event);
   };
 

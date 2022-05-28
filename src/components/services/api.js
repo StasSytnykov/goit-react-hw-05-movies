@@ -8,11 +8,11 @@ const onFetchMovies = async () => {
   return response.data.results;
 };
 
-const onFetchMovie = async query => {
+const onFetchFoundMovies = async query => {
   const response = await axios.get(
     `${BASE_URL}search/movie${API_KEY}&language=en-US&query=${query}`
   );
   return response.data.results;
 };
 
-export { onFetchMovie, onFetchMovies };
+export { onFetchFoundMovies, onFetchMovies };

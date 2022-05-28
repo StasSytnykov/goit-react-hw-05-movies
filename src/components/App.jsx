@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { Navigation } from './Navigation';
-import { onFetchMovies, onFetchMovie } from './services/api';
+import { onFetchMovies, onFetchFoundMovies } from './services/api';
 import { TrandingMovies } from './pages/TrandingMovies';
 import { Searchbar } from './pages/Searchbar';
 import { FoundMovieList } from './pages/FoundMovieList';
@@ -26,9 +26,8 @@ export const App = () => {
 
   const onGetFoundMovies = async query => {
     try {
-      const foundMovies = await onFetchMovie(query);
-      setMovie(foundMovies);
-      console.log(foundMovies);
+      const foundMovies = await onFetchFoundMovies(query);
+      setMovie(query ? foundMovies : []);
     } catch (error) {
       console.log(error);
     }
@@ -45,9 +44,13 @@ export const App = () => {
           <Route exact path="/">
             <TrandingMovies movies={movies} />
           </Route>
+
           <Route path="/movies">
-            <Searchbar onGetMovies={onGetFoundMovies} />
-            <FoundMovieList foundMovies={foundMovies} />
+            <Searchbar onGetFoundMovies={onGetFoundMovies} />
+
+            {foundMovies.length > 0 && (
+              <FoundMovieList foundMovies={foundMovies} />
+            )}
           </Route>
         </Switch>
       </main>
