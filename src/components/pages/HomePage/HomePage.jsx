@@ -1,4 +1,4 @@
-import { HomePageItem } from './HomePageItem';
+import { HomePageItem } from './HomePageItem/HomePageItem';
 
 export const HomePage = ({ movies }) => {
   return (
