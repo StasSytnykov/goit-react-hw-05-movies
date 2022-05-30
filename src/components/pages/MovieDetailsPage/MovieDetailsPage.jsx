@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link, Route, Switch } from 'react-router-dom';
 import { Cast } from '../Cast';
+import { Reviews } from '../Reviews';
 import { onFetchMovie } from '../../services/api';
 
 export const MovieDetailsPage = () => {
@@ -60,10 +61,7 @@ export const MovieDetailsPage = () => {
         </Route>
 
         <Route path={'/movies/:id/reviews'}>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti
-            pariatur nemo cumque distinctio commodi vero. Amet, fugiat.
-          </p>
+          <Reviews id={id} />
         </Route>
       </Switch>
     </div>

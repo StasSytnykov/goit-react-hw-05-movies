@@ -29,6 +29,17 @@ const onFetchCast = async id => {
   return response.data;
 };
 
-// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
+const onFetchReviews = async id => {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}/reviews${API_KEY}&language=en-US`
+  );
+  return response.data.results;
+};
 
-export { onFetchFoundMovies, onFetchMovies, onFetchMovie, onFetchCast };
+export {
+  onFetchFoundMovies,
+  onFetchMovies,
+  onFetchMovie,
+  onFetchCast,
+  onFetchReviews,
+};
