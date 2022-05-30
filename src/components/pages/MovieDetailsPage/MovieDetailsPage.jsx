@@ -6,9 +6,11 @@ import { onFetchMovie } from '../../services/api';
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { id } = useParams();
-  const { title, overview, release_date, genres, poster_path } = movie;
-  console.log(poster_path);
-  console.log(movie);
+  const { title, overview, release_date, genres, poster_path, vote_average } =
+    movie;
+  const posterImage = `https://image.tmdb.org/t/p/w300/${poster_path}`;
+  const normalisedStirng =
+    vote_average && vote_average.toString().replace(/\D/g, '');
 
   useEffect(() => {
     const onGetMovie = async () => {
@@ -17,6 +19,7 @@ export const MovieDetailsPage = () => {
         setMovie(movie);
       } catch (error) {
         console.log(error);
+        alert('Something went wrong :(');
       }
     };
     onGetMovie();
@@ -24,11 +27,11 @@ export const MovieDetailsPage = () => {
 
   return (
     <div>
-      <img src={`https://image.tmdb.org/t/p/w300${poster_path}`} alt="" />
+      <img src={poster_path && posterImage} alt="" />
       <h2>
         {title} ({release_date})
       </h2>
-      {/* <p>{Desc}</p> */}
+      <p>User score: {normalisedStirng}%</p>
       <h3>Overview</h3>
       <p>{overview}</p>
       <h3>Genres</h3>

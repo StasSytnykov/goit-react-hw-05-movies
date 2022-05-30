@@ -22,6 +22,7 @@ export const App = () => {
       setMovies(movies);
     } catch (error) {
       console.log(error);
+      alert('Something went wrong :(');
     }
   };
 
@@ -31,6 +32,7 @@ export const App = () => {
       setMovie(query ? foundMovies : []);
     } catch (error) {
       console.log(error);
+      alert('Something went wrong :(');
     }
   };
 
@@ -42,6 +44,8 @@ export const App = () => {
 
       <main>
         <Switch>
+          {/* <Route exact path="/" render={() => <Redirect to={'/'} />} /> */}
+
           <Route exact path="/">
             <HomePage movies={movies} />
           </Route>

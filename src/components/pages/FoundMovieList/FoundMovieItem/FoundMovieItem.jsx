@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-export const FoundMovieItem = ({ title }) => {
+export const FoundMovieItem = ({ title, id }) => {
   return (
     <li>
-      <Link to={'query'}>{title}</Link>
+      <Link to={`/movies/${id}`}>{title}</Link>
     </li>
   );
 };

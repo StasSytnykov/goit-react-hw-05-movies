@@ -7,6 +7,7 @@ export const Navigation = () => {
         Home
       </NavLink>
       <NavLink to={'/movies'}>Movies</NavLink>
+      <hr />
     </nav>
   );
 };
