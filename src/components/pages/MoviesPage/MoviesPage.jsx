@@ -1,10 +1,17 @@
 import { useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 
 export const MoviesPage = ({ onGetFoundMovies }) => {
   const [query, setQuery] = useState('');
+  const history = useHistory();
+  const location = useLocation();
 
   const onSubmitForm = event => {
     event.preventDefault();
+    history.push({
+      pathname: location.pathname,
+      search: `?query=${query}`,
+    });
     onGetFoundMovies(query);
     onReset(event);
   };
