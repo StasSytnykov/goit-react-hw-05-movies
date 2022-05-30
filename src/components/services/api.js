@@ -22,4 +22,13 @@ const onFetchMovie = async id => {
   return response.data;
 };
 
-export { onFetchFoundMovies, onFetchMovies, onFetchMovie };
+const onFetchCast = async id => {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}/credits${API_KEY}&language=en-US`
+  );
+  return response.data;
+};
+
+// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
+
+export { onFetchFoundMovies, onFetchMovies, onFetchMovie, onFetchCast };

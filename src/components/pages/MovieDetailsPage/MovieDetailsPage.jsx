@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
+import { Cast } from '../Cast';
 import { onFetchMovie } from '../../services/api';
 
 export const MovieDetailsPage = () => {
@@ -27,7 +28,11 @@ export const MovieDetailsPage = () => {
 
   return (
     <div>
-      <img src={poster_path && posterImage} alt="" />
+      {poster_path ? (
+        <img src={poster_path && posterImage} alt="" />
+      ) : (
+        <h2>Sorry photo not found.</h2>
+      )}
       <h2>
         {title} ({release_date})
       </h2>
@@ -41,8 +46,26 @@ export const MovieDetailsPage = () => {
       <hr />
       <p>Aditional info</p>
       <hr />
-      <Link to={''}></Link>
-      <Link to={''}></Link>
+      <ul>
+        <li>
+          <Link to={`/movies/${id}/cast`}>Cast</Link>
+        </li>
+        <li>
+          <Link to={`/movies/${id}/reviews`}>Reviews</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route path={'/movies/:id/cast'}>
+          <Cast id={id} />
+        </Route>
+
+        <Route path={'/movies/:id/reviews'}>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti
+            pariatur nemo cumque distinctio commodi vero. Amet, fugiat.
+          </p>
+        </Route>
+      </Switch>
     </div>
   );
 };
