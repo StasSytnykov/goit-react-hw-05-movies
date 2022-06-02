@@ -1,11 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { onFetchMovies, onFetchFoundMovies } from './services/api';
-import { HomePage } from './pages/HomePage';
-import { MoviesPage } from './pages/MoviesPage';
-import { FoundMovieList } from './pages/FoundMovieList';
-import { MovieDetailsPage } from './pages/MovieDetailsPage';
+const HomePage = lazy(() =>
+  import('./pages/HomePage' /* webpackChunkName: "Home__Page" */)
+);
+const MoviesPage = lazy(() =>
+  import('./pages/MoviesPage' /* webpackChunkName: "Movies__Page" */)
+);
+const FoundMovieList = lazy(() =>
+  import(
+    './pages/FoundMovieList' /* webpackChunkName: "FoundMovieList__Page" */
+  )
+);
+const MovieDetailsPage = lazy(() =>
+  import(
+    './pages/MovieDetailsPage' /* webpackChunkName: "MovieDetails__Page" */
+  )
+);
+const NotFoundPage = lazy(() =>
+  import('./pages/NotFoundPage' /* webpackChunkName: "NotFound__Page" */)
+);
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
@@ -42,29 +57,35 @@ export const App = () => {
       </header>
 
       <main>
-        <Switch>
-          <Route
-            exact
-            path="/goit-react-hw-05-movies"
-            render={() => <Redirect to={'/'} />}
-          />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route
+              exact
+              path="/goit-react-hw-05-movies"
+              render={() => <Redirect to={'/'} />}
+            />
 
-          <Route exact path="/">
-            <HomePage movies={movies} />
-          </Route>
+            <Route exact path="/">
+              <HomePage movies={movies} />
+            </Route>
 
-          <Route path="/movies/:id">
-            <MovieDetailsPage />
-          </Route>
+            <Route path="/movies/:id">
+              <MovieDetailsPage />
+            </Route>
 
-          <Route exact path="/movies">
-            <MoviesPage onGetFoundMovies={onGetFoundMovies} />
+            <Route exact path="/movies">
+              <MoviesPage onGetFoundMovies={onGetFoundMovies} />
 
-            {foundMovies.length > 0 && (
-              <FoundMovieList foundMovies={foundMovies} />
-            )}
-          </Route>
-        </Switch>
+              {foundMovies.length > 0 && (
+                <FoundMovieList foundMovies={foundMovies} />
+              )}
+            </Route>
+
+            <Route>
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        </Suspense>
       </main>
     </div>
   );

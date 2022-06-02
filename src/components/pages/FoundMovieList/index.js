@@ -1,1 +1,1 @@
-export { FoundMovieList } from './FoundMovieList';
+export { FoundMovieList as default } from './FoundMovieList';

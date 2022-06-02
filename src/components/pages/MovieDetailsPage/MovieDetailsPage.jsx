@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   Link,
@@ -9,9 +9,13 @@ import {
   useHistory,
 } from 'react-router-dom';
 import { Button } from 'components/Button';
-import { Cast } from '../Cast';
-import { Reviews } from '../Reviews';
+// import { Cast } from '../Cast';
+// import { Reviews } from '../Reviews';
 import { onFetchMovie } from '../../services/api';
+const Cast = lazy(() => import('../Cast' /* webpackChunkName: "Cast__Page" */));
+const Reviews = lazy(() =>
+  import('../Reviews' /* webpackChunkName: "Reviews__Page" */)
+);
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
@@ -39,7 +43,7 @@ export const MovieDetailsPage = () => {
   }, [id]);
 
   const onClickGoBack = () => {
-    history.push(location.state.from);
+    history.push(location.state?.from ?? '/');
   };
 
   return (
@@ -76,7 +80,7 @@ export const MovieDetailsPage = () => {
             to={{
               pathname: `${match.url}/cast`,
               state: {
-                from: location.state.from,
+                from: location.state?.from,
               },
             }}
           >
@@ -88,7 +92,7 @@ export const MovieDetailsPage = () => {
             to={{
               pathname: `${match.url}/reviews`,
               state: {
-                from: location.state.from,
+                from: location.state?.from,
               },
             }}
           >
@@ -98,15 +102,17 @@ export const MovieDetailsPage = () => {
       </ul>
       <hr />
 
-      <Switch>
-        <Route path={`${match.path}/cast`}>
-          <Cast id={id} />
-        </Route>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path={`${match.path}/cast`}>
+            <Cast id={id} />
+          </Route>
 
-        <Route path={`${match.path}/reviews`}>
-          <Reviews id={id} />
-        </Route>
-      </Switch>
+          <Route path={`${match.path}/reviews`}>
+            <Reviews id={id} />
+          </Route>
+        </Switch>
+      </Suspense>
     </div>
   );
 };
