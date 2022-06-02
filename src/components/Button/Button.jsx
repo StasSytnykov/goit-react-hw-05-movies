@@ -1,6 +1,6 @@
-export const Button = ({ onCLick }) => {
+export const Button = ({ onClick }) => {
   return (
-    <button onClick={onCLick} type="button">
+    <button onClick={onClick} type="button">
       Go back
     </button>
   );

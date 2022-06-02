@@ -6,7 +6,7 @@ import {
   Switch,
   useRouteMatch,
   useLocation,
-  // useHistory,
+  useHistory,
 } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { Cast } from '../Cast';
@@ -18,13 +18,12 @@ export const MovieDetailsPage = () => {
   const { id } = useParams();
   const match = useRouteMatch();
   const location = useLocation();
-  // const history = useHistory();
+  const history = useHistory();
   const { title, overview, release_date, genres, poster_path, vote_average } =
     movie;
   const posterImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
   const normalisedStirng =
     vote_average && vote_average.toString().replace(/\D/g, '');
-  console.log(location);
 
   useEffect(() => {
     const onGetMovie = async () => {
@@ -40,8 +39,7 @@ export const MovieDetailsPage = () => {
   }, [id]);
 
   const onClickGoBack = () => {
-    console.log(location);
-    // history.push(location);
+    history.push(location.state.from);
   };
 
   return (
@@ -78,7 +76,7 @@ export const MovieDetailsPage = () => {
             to={{
               pathname: `${match.url}/cast`,
               state: {
-                from: location,
+                from: location.state.from,
               },
             }}
           >
@@ -90,7 +88,7 @@ export const MovieDetailsPage = () => {
             to={{
               pathname: `${match.url}/reviews`,
               state: {
-                from: location,
+                from: location.state.from,
               },
             }}
           >

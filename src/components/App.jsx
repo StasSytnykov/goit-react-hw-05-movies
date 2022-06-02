@@ -13,7 +13,6 @@ export const App = () => {
 
   useEffect(() => {
     onGetMovies();
-    onGetFoundMovies();
   }, []);
 
   const onGetMovies = async () => {

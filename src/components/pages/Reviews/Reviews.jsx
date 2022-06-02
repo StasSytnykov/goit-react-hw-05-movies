@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
 import { onFetchReviews } from 'components/services/api';
 
 export const Reviews = ({ id }) => {
   const [reviewsData, setReviewsData] = useState([]);
-  //   const location = useLocation();
-  //   console.log(location);
 
   useEffect(() => {
     const onGetRviews = async () => {
