@@ -1,0 +1,20 @@
+.nav {
+  text-align: center;
+  padding: 15px 0 15px 0;
+  border-bottom: 1px solid gray;
+}
+
+.link {
+  color: black;
+  font-size: larger;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+}
+
+.link:not(:last-child) {
+  margin-right: 30px;
+}
+
+.activeLink {
+  color: red;
+}

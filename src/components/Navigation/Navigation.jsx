@@ -1,11 +1,14 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import style from './Navigation.module.css';
 
 export const Navigation = () => {
   const location = useLocation();
 
   return (
-    <nav>
+    <nav className={style.nav}>
       <NavLink
+        className={style.link}
+        activeClassName={style.activeLink}
         exact
         to={{
           pathname: '/',
@@ -17,6 +20,8 @@ export const Navigation = () => {
         Home
       </NavLink>
       <NavLink
+        className={style.link}
+        activeClassName={style.activeLink}
         to={{
           pathname: '/movies',
           state: {
@@ -26,7 +31,6 @@ export const Navigation = () => {
       >
         Movies
       </NavLink>
-      <hr />
     </nav>
   );
 };
