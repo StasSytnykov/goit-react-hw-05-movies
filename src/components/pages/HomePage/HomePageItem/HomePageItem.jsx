@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 export const HomePageItem = ({ title, id }) => {
@@ -17,4 +18,9 @@ export const HomePageItem = ({ title, id }) => {
       </Link>
     </li>
   );
+};
+
+HomePageItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };

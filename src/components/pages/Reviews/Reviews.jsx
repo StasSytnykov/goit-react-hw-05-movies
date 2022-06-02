@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { onFetchReviews } from 'components/services/api';
 
@@ -33,4 +34,8 @@ export const Reviews = ({ id }) => {
       )}
     </div>
   );
+};
+
+Reviews.propTypes = {
+  id: PropTypes.string.isRequired,
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { HomePageItem } from './HomePageItem/HomePageItem';
 
 export const HomePage = ({ movies }) => {
@@ -13,4 +14,8 @@ export const HomePage = ({ movies }) => {
       }
     </div>
   );
+};
+
+HomePage.propTypes = {
+  foundMovies: PropTypes.arrayOf(PropTypes.object),
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FoundMovieItem } from './FoundMovieItem';
 
 export const FoundMovieList = ({ foundMovies }) => {
@@ -8,4 +9,8 @@ export const FoundMovieList = ({ foundMovies }) => {
       ))}
     </ul>
   );
+};
+
+FoundMovieList.propTypes = {
+  foundMovies: PropTypes.arrayOf(PropTypes.object),
 };

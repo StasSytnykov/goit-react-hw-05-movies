@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
@@ -31,4 +32,8 @@ export const MoviesPage = ({ onGetFoundMovies }) => {
       <button type="submit">Search</button>
     </form>
   );
+};
+
+MoviesPage.propTypes = {
+  onGetFoundMovies: PropTypes.func.isRequired,
 };

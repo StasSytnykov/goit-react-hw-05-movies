@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { onFetchMovies, onFetchFoundMovies } from './services/api';
 import { HomePage } from './pages/HomePage';
@@ -43,7 +43,11 @@ export const App = () => {
 
       <main>
         <Switch>
-          {/* <Route exact path="/" render={() => <Redirect to={'/'} />} /> */}
+          <Route
+            exact
+            path="/goit-react-hw-05-movies"
+            render={() => <Redirect to={'/'} />}
+          />
 
           <Route exact path="/">
             <HomePage movies={movies} />

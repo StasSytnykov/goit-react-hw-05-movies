@@ -1,5 +1,6 @@
-import { onFetchCast } from 'components/services/api';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { onFetchCast } from 'components/services/api';
 
 export const Cast = ({ id }) => {
   const [castData, setCastData] = useState([]);
@@ -33,4 +34,8 @@ export const Cast = ({ id }) => {
       })}
     </ul>
   );
+};
+
+Cast.propTypes = {
+  id: PropTypes.string.isRequired,
 };
