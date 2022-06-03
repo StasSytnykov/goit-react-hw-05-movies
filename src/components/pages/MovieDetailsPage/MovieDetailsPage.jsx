@@ -77,6 +77,7 @@ export const MovieDetailsPage = () => {
       <ul className={style.list}>
         <li className={style.listItem}>
           <Link
+            className={style.link}
             to={{
               pathname: `${match.url}/cast`,
               state: {
@@ -87,8 +88,9 @@ export const MovieDetailsPage = () => {
             Cast
           </Link>
         </li>
-        <li>
+        <li className={style.listItem}>
           <Link
+            className={style.link}
             to={{
               pathname: `${match.url}/reviews`,
               state: {

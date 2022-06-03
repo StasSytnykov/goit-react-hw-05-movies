@@ -14,7 +14,6 @@ code {
 
 a {
   text-decoration: none;
-  /* color: black; */
 }
 
 ul {
@@ -26,4 +25,8 @@ ul {
 img {
   display: block;
   object-fit: cover;
+}
+
+hr {
+  margin: 0;
 }

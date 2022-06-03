@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import style from './Button.module.css';
 
 export const Button = ({ onClick }) => {
   return (
-    <button onClick={onClick} type="button">
+    <button className={style.button} onClick={onClick} type="button">
       Go back
     </button>
   );
