@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { onFetchCast } from 'components/services/api';
+import style from './Cast.module.css';
 
 export const Cast = ({ id }) => {
   const [castData, setCastData] = useState([]);
@@ -19,17 +20,17 @@ export const Cast = ({ id }) => {
   }, [id]);
 
   return (
-    <ul>
+    <ul className={style.list}>
       {castData.map(({ profile_path, name, character, cast_id }) => {
         const posterImage = `https://image.tmdb.org/t/p/w300/${profile_path}`;
         return (
-          <li key={cast_id}>
-            {profile_path && (
+          profile_path && (
+            <li className={style.listItem} key={cast_id}>
               <img src={profile_path && posterImage} alt="" width={150} />
-            )}
-            <p>{name}</p>
-            <p>{character}</p>
-          </li>
+              <p>{name}</p>
+              <p>{character}</p>
+            </li>
+          )
         );
       })}
     </ul>
