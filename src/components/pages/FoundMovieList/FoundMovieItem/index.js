@@ -1,1 +1,0 @@
-export { FoundMovieItem } from './FoundMovieItem';

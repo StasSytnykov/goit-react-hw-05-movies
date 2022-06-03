@@ -22,7 +22,7 @@ export const HomePageItem = ({ title, id, poster_path }) => {
         ) : (
           <h2>Sorry photo not found.</h2>
         )}
-        {title}
+        <p className={style.text}> {title}</p>
       </Link>
     </li>
   );

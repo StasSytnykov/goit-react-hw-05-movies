@@ -13,17 +13,17 @@ code {
 }
 
 a {
-  list-style: none;
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
 li {
   list-style: none;
+  margin: 0 0 0 0;
 }
 
 img {
-  width: 100%;
-  height: auto;
+  height: 450px;
   display: block;
+  object-fit: cover;
 }

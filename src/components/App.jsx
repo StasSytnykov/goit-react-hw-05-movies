@@ -8,11 +8,6 @@ const HomePage = lazy(() =>
 const MoviesPage = lazy(() =>
   import('./pages/MoviesPage' /* webpackChunkName: "Movies__Page" */)
 );
-const FoundMovieList = lazy(() =>
-  import(
-    './pages/FoundMovieList' /* webpackChunkName: "FoundMovieList__Page" */
-  )
-);
 const MovieDetailsPage = lazy(() =>
   import(
     './pages/MovieDetailsPage' /* webpackChunkName: "MovieDetails__Page" */
@@ -66,6 +61,7 @@ export const App = () => {
             />
 
             <Route exact path="/">
+              <h2 style={{ textAlign: 'center' }}>Tranding today</h2>
               <HomePage movies={movies} />
             </Route>
 
@@ -76,9 +72,7 @@ export const App = () => {
             <Route exact path="/movies">
               <MoviesPage onGetFoundMovies={onGetFoundMovies} />
 
-              {foundMovies.length > 0 && (
-                <FoundMovieList foundMovies={foundMovies} />
-              )}
+              {foundMovies.length > 0 && <HomePage movies={foundMovies} />}
             </Route>
 
             <Route>

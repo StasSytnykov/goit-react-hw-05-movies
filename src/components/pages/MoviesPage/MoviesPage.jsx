@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import style from './MoviePage.module.css';
 
 export const MoviesPage = ({ onGetFoundMovies }) => {
   const [query, setQuery] = useState('');
@@ -27,9 +28,16 @@ export const MoviesPage = ({ onGetFoundMovies }) => {
   };
 
   return (
-    <form onSubmit={onSubmitForm}>
-      <input type="text" value={query} onChange={onChangeInput} />
-      <button type="submit">Search</button>
+    <form className={style.searchbar} onSubmit={onSubmitForm}>
+      <input
+        className={style.searchInput}
+        type="text"
+        value={query}
+        onChange={onChangeInput}
+      />
+      <button className={style.searchButton} type="submit">
+        Search
+      </button>
     </form>
   );
 };
