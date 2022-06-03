@@ -18,7 +18,12 @@ export const HomePageItem = ({ title, id, poster_path }) => {
         }}
       >
         {poster_path ? (
-          <img src={poster_path && posterImage} alt="" width={300} />
+          <img
+            className={style.img}
+            src={poster_path && posterImage}
+            alt=""
+            width={300}
+          />
         ) : (
           <h2>Sorry photo not found.</h2>
         )}

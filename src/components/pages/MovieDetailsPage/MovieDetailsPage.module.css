@@ -1,0 +1,23 @@
+.container {
+  padding: 0 15px 0 15px;
+}
+.containerFlex {
+  display: flex;
+}
+
+.content {
+  padding-left: 10px;
+}
+
+.text {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+.listItem:not(:last-child) {
+  margin-right: 30px;
+}

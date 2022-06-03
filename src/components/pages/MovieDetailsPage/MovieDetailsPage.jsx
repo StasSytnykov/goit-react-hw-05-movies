@@ -9,9 +9,8 @@ import {
   useHistory,
 } from 'react-router-dom';
 import { Button } from 'components/Button';
-// import { Cast } from '../Cast';
-// import { Reviews } from '../Reviews';
 import { onFetchMovie } from '../../services/api';
+import style from './MovieDetailsPage.module.css';
 const Cast = lazy(() => import('../Cast' /* webpackChunkName: "Cast__Page" */));
 const Reviews = lazy(() =>
   import('../Reviews' /* webpackChunkName: "Reviews__Page" */)
@@ -47,35 +46,36 @@ export const MovieDetailsPage = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <Button onClick={onClickGoBack} />
-      <div>
+      <div className={style.containerFlex}>
         {poster_path ? (
           <img src={poster_path && posterImage} alt="" width={300} />
         ) : (
           <h2>Sorry photo not found.</h2>
         )}
+        <div className={style.content}>
+          <h2>
+            {title} ({release_date})
+          </h2>
+          <p>User score: {normalisedStirng}%</p>
 
-        <h2>
-          {title} ({release_date})
-        </h2>
-        <p>User score: {normalisedStirng}%</p>
+          <h3>Overview</h3>
+          <p>{overview}</p>
 
-        <h3>Overview</h3>
-        <p>{overview}</p>
-
-        <h3>Genres</h3>
-        <ul>
-          {genres && genres.map(({ name, id }) => <li key={id}>{name}</li>)}
-        </ul>
+          <h3>Genres</h3>
+          <ul>
+            {genres && genres.map(({ name, id }) => <li key={id}>{name}</li>)}
+          </ul>
+        </div>
       </div>
 
       <hr />
 
-      <p>Aditional info</p>
+      <p className={style.text}>Aditional info</p>
 
-      <ul>
-        <li>
+      <ul className={style.list}>
+        <li className={style.listItem}>
           <Link
             to={{
               pathname: `${match.url}/cast`,
