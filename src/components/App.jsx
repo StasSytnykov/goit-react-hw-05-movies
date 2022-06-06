@@ -55,7 +55,7 @@ export const App = () => {
 
   return (
     <div>
-      {location.pathname === '/goit-react-hw-05-movies' && <Navigate to="/" />}
+      {location.pathname === '/goit-react-hw-05-movies/' && <Navigate to="/" />}
       <header>
         <Navigation />
       </header>
