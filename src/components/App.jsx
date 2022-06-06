@@ -27,6 +27,7 @@ export const App = () => {
   const [movies, setMovies] = useState([]);
   const [foundMovies, setMovie] = useState([]);
   const location = useLocation();
+  console.log(location.pathname);
 
   useEffect(() => {
     onGetMovies();
@@ -65,7 +66,7 @@ export const App = () => {
         )}
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path="/" element={<HomePage movies={movies} />}></Route>
+            <Route path="/" element={<HomePage movies={movies} />} />
 
             <Route path="/movies/:id/*" element={<MovieDetailsPage />}>
               <Route path={`cast`} element={<Cast />} />
