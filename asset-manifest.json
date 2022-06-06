@@ -1,33 +1,33 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-05-movies/static/css/main.f274b0fc.css",
-    "main.js": "/goit-react-hw-05-movies/static/js/main.aac1dd06.js",
+    "main.css": "/goit-react-hw-05-movies/static/css/main.625501dc.css",
+    "main.js": "/goit-react-hw-05-movies/static/js/main.b0f383e6.js",
     "Home__Page.css": "/goit-react-hw-05-movies/static/css/Home__Page.1ec8b444.chunk.css",
-    "Home__Page.js": "/goit-react-hw-05-movies/static/js/Home__Page.132ce05b.chunk.js",
+    "Home__Page.js": "/goit-react-hw-05-movies/static/js/Home__Page.598bcf55.chunk.js",
     "Movies__Page.css": "/goit-react-hw-05-movies/static/css/Movies__Page.5cc8162a.chunk.css",
-    "Movies__Page.js": "/goit-react-hw-05-movies/static/js/Movies__Page.11a4f949.chunk.js",
+    "Movies__Page.js": "/goit-react-hw-05-movies/static/js/Movies__Page.93e03333.chunk.js",
     "MovieDetails__Page.css": "/goit-react-hw-05-movies/static/css/MovieDetails__Page.f52fe492.chunk.css",
-    "MovieDetails__Page.js": "/goit-react-hw-05-movies/static/js/MovieDetails__Page.d021007a.chunk.js",
+    "MovieDetails__Page.js": "/goit-react-hw-05-movies/static/js/MovieDetails__Page.dce5ab73.chunk.js",
     "NotFound__Page.js": "/goit-react-hw-05-movies/static/js/NotFound__Page.72c77c62.chunk.js",
     "Cast__Page.css": "/goit-react-hw-05-movies/static/css/Cast__Page.be8115ed.chunk.css",
-    "Cast__Page.js": "/goit-react-hw-05-movies/static/js/Cast__Page.e11dae83.chunk.js",
-    "Reviews__Page.js": "/goit-react-hw-05-movies/static/js/Reviews__Page.2ae0b925.chunk.js",
+    "Cast__Page.js": "/goit-react-hw-05-movies/static/js/Cast__Page.42198676.chunk.js",
+    "Reviews__Page.js": "/goit-react-hw-05-movies/static/js/Reviews__Page.dba7dd37.chunk.js",
     "index.html": "/goit-react-hw-05-movies/index.html",
-    "main.f274b0fc.css.map": "/goit-react-hw-05-movies/static/css/main.f274b0fc.css.map",
-    "main.aac1dd06.js.map": "/goit-react-hw-05-movies/static/js/main.aac1dd06.js.map",
+    "main.625501dc.css.map": "/goit-react-hw-05-movies/static/css/main.625501dc.css.map",
+    "main.b0f383e6.js.map": "/goit-react-hw-05-movies/static/js/main.b0f383e6.js.map",
     "Home__Page.1ec8b444.chunk.css.map": "/goit-react-hw-05-movies/static/css/Home__Page.1ec8b444.chunk.css.map",
-    "Home__Page.132ce05b.chunk.js.map": "/goit-react-hw-05-movies/static/js/Home__Page.132ce05b.chunk.js.map",
+    "Home__Page.598bcf55.chunk.js.map": "/goit-react-hw-05-movies/static/js/Home__Page.598bcf55.chunk.js.map",
     "Movies__Page.5cc8162a.chunk.css.map": "/goit-react-hw-05-movies/static/css/Movies__Page.5cc8162a.chunk.css.map",
-    "Movies__Page.11a4f949.chunk.js.map": "/goit-react-hw-05-movies/static/js/Movies__Page.11a4f949.chunk.js.map",
+    "Movies__Page.93e03333.chunk.js.map": "/goit-react-hw-05-movies/static/js/Movies__Page.93e03333.chunk.js.map",
     "MovieDetails__Page.f52fe492.chunk.css.map": "/goit-react-hw-05-movies/static/css/MovieDetails__Page.f52fe492.chunk.css.map",
-    "MovieDetails__Page.d021007a.chunk.js.map": "/goit-react-hw-05-movies/static/js/MovieDetails__Page.d021007a.chunk.js.map",
+    "MovieDetails__Page.dce5ab73.chunk.js.map": "/goit-react-hw-05-movies/static/js/MovieDetails__Page.dce5ab73.chunk.js.map",
     "NotFound__Page.72c77c62.chunk.js.map": "/goit-react-hw-05-movies/static/js/NotFound__Page.72c77c62.chunk.js.map",
     "Cast__Page.be8115ed.chunk.css.map": "/goit-react-hw-05-movies/static/css/Cast__Page.be8115ed.chunk.css.map",
-    "Cast__Page.e11dae83.chunk.js.map": "/goit-react-hw-05-movies/static/js/Cast__Page.e11dae83.chunk.js.map",
-    "Reviews__Page.2ae0b925.chunk.js.map": "/goit-react-hw-05-movies/static/js/Reviews__Page.2ae0b925.chunk.js.map"
+    "Cast__Page.42198676.chunk.js.map": "/goit-react-hw-05-movies/static/js/Cast__Page.42198676.chunk.js.map",
+    "Reviews__Page.dba7dd37.chunk.js.map": "/goit-react-hw-05-movies/static/js/Reviews__Page.dba7dd37.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f274b0fc.css",
-    "static/js/main.aac1dd06.js"
+    "static/css/main.625501dc.css",
+    "static/js/main.b0f383e6.js"
   ]
 }
