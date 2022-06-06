@@ -1,32 +1,21 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from './Navigation.module.css';
 
 export const Navigation = () => {
-  const location = useLocation();
-
   return (
     <nav className={style.nav}>
       <NavLink
-        className={style.link}
-        activeClassName={style.activeLink}
-        exact
+        className={({ isActive }) => (isActive ? style.activeLink : style.link)}
         to={{
           pathname: '/',
-          state: {
-            from: location,
-          },
         }}
       >
         Home
       </NavLink>
       <NavLink
-        className={style.link}
-        activeClassName={style.activeLink}
+        className={({ isActive }) => (isActive ? style.activeLink : style.link)}
         to={{
           pathname: '/movies',
-          state: {
-            from: location,
-          },
         }}
       >
         Movies

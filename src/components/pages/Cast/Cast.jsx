@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { onFetchCast } from 'components/services/api';
 import style from './Cast.module.css';
 
-export const Cast = ({ id }) => {
+export const Cast = () => {
   const [castData, setCastData] = useState([]);
+  const { id } = useParams();
+  // console.log(test);
+  // console.log(id);
 
   useEffect(() => {
     const onGetCast = async () => {
@@ -37,6 +41,6 @@ export const Cast = ({ id }) => {
   );
 };
 
-Cast.propTypes = {
-  id: PropTypes.string.isRequired,
-};
+// Cast.propTypes = {
+//   id: PropTypes.string.isRequired,
+// };

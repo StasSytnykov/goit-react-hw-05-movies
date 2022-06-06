@@ -1,27 +1,15 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  Link,
-  Route,
-  Switch,
-  useRouteMatch,
-  useLocation,
-  useHistory,
-} from 'react-router-dom';
+import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import { Button } from 'components/Button';
 import { onFetchMovie } from '../../services/api';
 import style from './MovieDetailsPage.module.css';
-const Cast = lazy(() => import('../Cast' /* webpackChunkName: "Cast__Page" */));
-const Reviews = lazy(() =>
-  import('../Reviews' /* webpackChunkName: "Reviews__Page" */)
-);
 
 export const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { id } = useParams();
-  const match = useRouteMatch();
+  const navigate = useNavigate();
   const location = useLocation();
-  const history = useHistory();
   const { title, overview, release_date, genres, poster_path, vote_average } =
     movie;
   const posterImage = `https://image.tmdb.org/t/p/w500/${poster_path}`;
@@ -42,7 +30,7 @@ export const MovieDetailsPage = () => {
   }, [id]);
 
   const onClickGoBack = () => {
-    history.push(location.state?.from ?? '/');
+    navigate(location?.state?.from ?? '/');
   };
 
   return (
@@ -76,45 +64,18 @@ export const MovieDetailsPage = () => {
 
       <ul className={style.list}>
         <li className={style.listItem}>
-          <Link
-            className={style.link}
-            to={{
-              pathname: `${match.url}/cast`,
-              state: {
-                from: location.state?.from,
-              },
-            }}
-          >
+          <Link className={style.link} state={location.state} to="cast">
             Cast
           </Link>
         </li>
         <li className={style.listItem}>
-          <Link
-            className={style.link}
-            to={{
-              pathname: `${match.url}/reviews`,
-              state: {
-                from: location.state?.from,
-              },
-            }}
-          >
+          <Link className={style.link} state={location.state} to="reviews">
             Reviews
           </Link>
         </li>
       </ul>
       <hr />
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route path={`${match.path}/cast`}>
-            <Cast id={id} />
-          </Route>
-
-          <Route path={`${match.path}/reviews`}>
-            <Reviews id={id} />
-          </Route>
-        </Switch>
-      </Suspense>
+      <Outlet />
     </div>
   );
 };

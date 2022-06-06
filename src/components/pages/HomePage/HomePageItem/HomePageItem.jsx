@@ -10,12 +10,8 @@ export const HomePageItem = ({ title, id, poster_path }) => {
     <li>
       <Link
         className={style.link}
-        to={{
-          pathname: `/movies/${id}`,
-          state: {
-            from: location,
-          },
-        }}
+        state={{ from: location }}
+        to={`/movies/${id}`}
       >
         {poster_path ? (
           <img

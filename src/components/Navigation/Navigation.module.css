@@ -15,6 +15,17 @@
   margin-right: 30px;
 }
 
+.link:hover {
+  color: #aa7171;
+}
+
 .activeLink {
   color: red;
+  font-size: larger;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+}
+
+.activeLink:not(:last-child) {
+  margin-right: 30px;
 }

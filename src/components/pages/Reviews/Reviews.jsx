@@ -1,9 +1,11 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { onFetchReviews } from 'components/services/api';
 
-export const Reviews = ({ id }) => {
+export const Reviews = () => {
   const [reviewsData, setReviewsData] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     const onGetRviews = async () => {
@@ -36,6 +38,6 @@ export const Reviews = ({ id }) => {
   );
 };
 
-Reviews.propTypes = {
-  id: PropTypes.string.isRequired,
-};
+// Reviews.propTypes = {
+//   id: PropTypes.string.isRequired,
+// };

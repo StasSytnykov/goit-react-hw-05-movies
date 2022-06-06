@@ -18,5 +18,5 @@ export const HomePage = ({ movies }) => {
 };
 
 HomePage.propTypes = {
-  foundMovies: PropTypes.arrayOf(PropTypes.object),
+  movies: PropTypes.arrayOf(PropTypes.object),
 };

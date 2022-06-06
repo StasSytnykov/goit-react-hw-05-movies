@@ -1,5 +1,5 @@
 import { useEffect, useState, lazy, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import { Navigation } from './Navigation';
 import { onFetchMovies, onFetchFoundMovies } from './services/api';
 const HomePage = lazy(() =>
@@ -16,10 +16,17 @@ const MovieDetailsPage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import('./pages/NotFoundPage' /* webpackChunkName: "NotFound__Page" */)
 );
+const Cast = lazy(() =>
+  import('./pages/Cast' /* webpackChunkName: "Cast__Page" */)
+);
+const Reviews = lazy(() =>
+  import('./pages/Reviews' /* webpackChunkName: "Reviews__Page" */)
+);
 
 export const App = () => {
   const [movies, setMovies] = useState([]);
   const [foundMovies, setMovie] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     onGetMovies();
@@ -47,38 +54,43 @@ export const App = () => {
 
   return (
     <div>
+      {location.pathname === '/goit-react-hw-05-movies' && <Navigate to="/" />}
       <header>
         <Navigation />
       </header>
 
       <main>
+        {location.pathname === '/' && (
+          <h2 style={{ textAlign: 'center' }}>Tranding today</h2>
+        )}
         <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
+          <Routes>
+            <Route path="/" element={<HomePage movies={movies} />}></Route>
+
+            <Route path="/movies/:id/*" element={<MovieDetailsPage />}>
+              <Route path={`cast`} element={<Cast />} />
+
+              <Route path={`reviews`} element={<Reviews />} />
+            </Route>
+
             <Route
-              exact
-              path="/goit-react-hw-05-movies"
-              render={() => <Redirect to={'/'} />}
-            />
-
-            <Route exact path="/">
-              <h2 style={{ textAlign: 'center' }}>Tranding today</h2>
-              <HomePage movies={movies} />
+              path="/movies"
+              element={
+                <MoviesPage
+                  onGetFoundMovies={onGetFoundMovies}
+                  foundMovies={foundMovies}
+                />
+              }
+            >
+              <Route
+                index
+                element={
+                  foundMovies.length > 0 && <HomePage movies={foundMovies} />
+                }
+              />
             </Route>
-
-            <Route path="/movies/:id">
-              <MovieDetailsPage />
-            </Route>
-
-            <Route exact path="/movies">
-              <MoviesPage onGetFoundMovies={onGetFoundMovies} />
-
-              {foundMovies.length > 0 && <HomePage movies={foundMovies} />}
-            </Route>
-
-            <Route>
-              <NotFoundPage />
-            </Route>
-          </Switch>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
         </Suspense>
       </main>
     </div>
